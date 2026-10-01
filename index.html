@@ -88,7 +88,7 @@ button{height:52px;padding:0 18px;border:0;border-radius:14px;background:var(--n
       <div class="metrics">
         <div class="metric"><div class="k">일별실적</div><div class="v" id="daily"></div></div>
         <div class="metric"><div class="k">하이캡실적</div><div class="v" id="highcap"></div></div>
-        <div class="metric"><div class="k">인보험실적</div><div class="v" id="insurance"></div></div>
+        <div class="metric"><div class="k">인보험실적(관리사항 적용)</div><div class="v" id="insurance"></div></div>
       </div>
     </div>
 
@@ -146,12 +146,12 @@ const DATA = [{"branch": "진주지점", "name": "오선화", "code": "154595", 
 const won = n => Number(n || 0).toLocaleString('ko-KR') + '원';
 
 function getHighcapRate(v) {
-  if (v >= 1400000) return 1.50;
-  if (v >= 1000000) return 1.40;
-  if (v >= 600000) return 1.30;
-  if (v >= 400000) return 1.20;
-  if (v >= 200000) return 1.10;
-  if (v >= 100000) return 1.00;
+  if (v >= 14000000) return 1.50;
+  if (v >= 10000000) return 1.40;
+  if (v >= 6000000) return 1.30;
+  if (v >= 4000000) return 1.20;
+  if (v >= 2000000) return 1.10;
+  if (v >= 1000000) return 1.00;
   return 0;
 }
 
@@ -211,7 +211,7 @@ function render(person) {
   document.getElementById('highcapAward').textContent = rate ? won(highcapAward) : '지급 없음';
   document.getElementById('highcapDetail').textContent = rate
     ? '인보험실적 ' + won(person.insurance) + ' × 지급률 ' + Math.round(rate*100) + '%'
-    : '하이캡실적 10만원 미만으로 지급률 구간 미달';
+    : '하이캡실적 100만원 미만으로 지급률 구간 미달';
 
   const active = Number(person.active) === 1;
   document.getElementById('activeTag').textContent = active ? '달성' : '미달성';
