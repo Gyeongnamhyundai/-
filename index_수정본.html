@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>10월 1주차 시상 진도</title>
+<style>
+:root {
+  --bg:#f5f7fb; --card:#ffffff; --ink:#172033; --muted:#6f7890;
+  --line:#e7ebf2; --navy:#1f3b68; --navy2:#2e568d; --soft:#eef4fb;
+  --green:#177a57; --greenbg:#eaf7f1; --gold:#9a6b00; --goldbg:#fff6dc;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",Segoe UI,sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:24px 16px 44px}
+.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:white;border-radius:22px;padding:24px 20px;box-shadow:0 12px 28px rgba(31,59,104,.18)}
+.hero h1{font-size:28px;line-height:1.25;margin:0 0 8px;font-weight:800;letter-spacing:-.5px}
+.hero p{margin:0;opacity:.88;font-size:15px}
+.search{margin-top:16px;background:white;border-radius:18px;padding:16px;box-shadow:0 8px 24px rgba(23,32,51,.08)}
+.label{font-size:14px;font-weight:700;margin-bottom:8px}
+.row{display:flex;gap:8px}
+input{flex:1;min-width:0;height:52px;border:1.5px solid #d8dfeb;border-radius:14px;padding:0 16px;font-size:18px;font-weight:700;outline:none;text-transform:uppercase}
+input:focus{border-color:var(--navy2);box-shadow:0 0 0 4px rgba(46,86,141,.10)}
+button{height:52px;padding:0 18px;border:0;border-radius:14px;background:var(--navy);color:white;font-size:16px;font-weight:800;cursor:pointer}
+.help{font-size:12.5px;color:var(--muted);margin-top:9px}
+#result{display:none;margin-top:16px}
+.person{background:white;border-radius:18px;padding:18px;box-shadow:0 8px 24px rgba(23,32,51,.07);border:1px solid var(--line)}
+.personTop{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.person h2{margin:0;font-size:24px}
+.branch{font-size:13px;color:var(--muted);margin-top:5px}
+.codeBadge{font-size:13px;font-weight:800;background:var(--soft);color:var(--navy);padding:7px 10px;border-radius:999px}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.metric{background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:12px 10px;text-align:center}
+.metric .k{font-size:12px;color:var(--muted);margin-bottom:5px}
+.metric .v{font-size:16px;font-weight:800;word-break:keep-all}
+.sectionTitle{font-size:15px;font-weight:800;color:#39435a;margin:18px 2px 10px}
+.award{background:white;border-radius:18px;padding:17px;margin-top:10px;border:1px solid var(--line);box-shadow:0 7px 18px rgba(23,32,51,.05)}
+.awardHead{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.awardName{font-size:16px;font-weight:800}
+.tag{font-size:12px;font-weight:800;border-radius:999px;padding:6px 9px;background:var(--soft);color:var(--navy)}
+.awardMain{font-size:24px;font-weight:900;margin-top:10px;letter-spacing:-.4px}
+.detail{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5}
+.rice{background:var(--greenbg);border-color:#ccebdd}
+.rice .awardMain{color:var(--green)}
+.cash{background:var(--goldbg);border-color:#f0dfac}
+.cash .awardMain{color:var(--gold)}
+.total{margin-top:14px;background:#172033;color:white;border-radius:18px;padding:18px}
+.totalLine{display:flex;justify-content:space-between;align-items:end;gap:12px}
+.totalLabel{font-size:14px;opacity:.78}
+.totalValue{font-size:28px;font-weight:900}
+.note{margin-top:14px;background:#fff;border:1px dashed #d7deea;border-radius:16px;padding:14px;font-size:13px;color:#596277;line-height:1.65}
+.error{display:none;margin-top:14px;background:#fff0f0;border:1px solid #ffd0d0;color:#a33131;border-radius:14px;padding:14px;font-size:14px;font-weight:700}
+.footer{text-align:center;color:#8a93a7;font-size:12px;margin-top:24px;line-height:1.6}
+@media(max-width:520px){
+ .wrap{padding:16px 12px 32px} .hero{padding:22px 17px} .hero h1{font-size:25px}
+ .row{flex-direction:column} button{width:100%} .metrics{grid-template-columns:1fr}
+ .metric{display:flex;justify-content:space-between;text-align:left;align-items:center;padding:13px 14px}
+ .metric .k{margin:0} .metric .v{font-size:15px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <h1>10월 1주차 시상 진도</h1>
+    <p>데이터 조회기준 : 10/1 17시 기준</p>
+  </section>
+
+  <section class="search">
+    <div class="label">설계사 코드를 입력해주세요</div>
+    <div class="row">
+      <input id="codeInput" inputmode="text" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" placeholder="예: 154595">
+      <button id="searchBtn" type="button">조회하기</button>
+    </div>
+    <div class="help">영문이 포함된 코드는 대·소문자 구분 없이 조회됩니다.</div>
+    <div id="error" class="error">조회되는 코드가 없습니다. 코드를 다시 확인해주세요.</div>
+  </section>
+
+  <section id="result">
+    <div class="person">
+      <div class="personTop">
+        <div>
+          <h2 id="name"></h2>
+          <div class="branch" id="branch"></div>
+        </div>
+        <div class="codeBadge" id="codeBadge"></div>
+      </div>
+      <div class="metrics">
+        <div class="metric"><div class="k">일별실적</div><div class="v" id="daily"></div></div>
+        <div class="metric"><div class="k">하이캡실적</div><div class="v" id="highcap"></div></div>
+        <div class="metric"><div class="k">인보험실적(관리사항 적용)</div><div class="v" id="insurance"></div></div>
+      </div>
+    </div>
+
+    <div class="sectionTitle">시상 진도</div>
+
+    <div class="award">
+      <div class="awardHead">
+        <div class="awardName">① 하이캡 구간 시상금</div>
+        <div class="tag" id="rateTag"></div>
+      </div>
+      <div class="awardMain" id="highcapAward"></div>
+      <div class="detail" id="highcapDetail"></div>
+    </div>
+
+    <div class="award rice">
+      <div class="awardHead">
+        <div class="awardName">② 유실적 시상</div>
+        <div class="tag" id="activeTag"></div>
+      </div>
+      <div class="awardMain" id="activeAward"></div>
+      <div class="detail">※ 유실적 기본활동 달성 전제로 평가</div>
+    </div>
+
+    <div class="award cash">
+      <div class="awardHead">
+        <div class="awardName">③ 일별실적 현금 시상</div>
+        <div class="tag" id="dailyTag"></div>
+      </div>
+      <div class="awardMain" id="dailyAward"></div>
+      <div class="detail" id="dailyDetail"></div>
+    </div>
+
+    <div class="total">
+      <div class="totalLine">
+        <div>
+          <div class="totalLabel">예상 현금 시상 합계</div>
+          <div style="font-size:12px;opacity:.66;margin-top:4px">하이캡 시상금 + 일별 현금 시상</div>
+        </div>
+        <div class="totalValue" id="totalCash"></div>
+      </div>
+    </div>
+
+    <div class="note">
+      본 화면은 <b>10/1 17시 기준 실적</b>으로 계산한 시상 진도입니다.<br>
+      실적 변동 및 최종 평가 기준에 따라 지급 결과가 달라질 수 있습니다.
+    </div>
+  </section>
+
+  <div class="footer">경남지역단 · 10월 1주차 시상 진도 조회</div>
+</div>
+
+<script>
+const DATA = [{"branch": "진주지점", "name": "오선화", "code": "154595", "daily": 100000, "active": 1, "highcap": 2097007, "insurance": 100000, "rate": 1.5, "highcapAward": 150000, "dailyAward": 50000, "totalCash": 200000}, {"branch": "진주지점", "name": "이은진", "code": "1C6287", "daily": 109260, "active": 1, "highcap": 1255804, "insurance": 78700, "rate": 1.4, "highcapAward": 110180, "dailyAward": 50000, "totalCash": 160180}, {"branch": "진주지점", "name": "K1", "code": "962283", "daily": 98590, "active": 1, "highcap": 1739682, "insurance": 98590, "rate": 1.5, "highcapAward": 147885, "dailyAward": 0, "totalCash": 147885}, {"branch": "거제지점", "name": "허정아", "code": "1A0151", "daily": 50420, "active": 1, "highcap": 709824, "insurance": 50420, "rate": 1.3, "highcapAward": 65546, "dailyAward": 0, "totalCash": 65546}, {"branch": "거제지점", "name": "정현주", "code": "1C9197", "daily": 96330, "active": 1, "highcap": 828512, "insurance": 77660, "rate": 1.3, "highcapAward": 100958, "dailyAward": 0, "totalCash": 100958}, {"branch": "거제지점", "name": "강주희", "code": "1D3869", "daily": 94430, "active": 1, "highcap": 1875587, "insurance": 94430, "rate": 1.5, "highcapAward": 141645, "dailyAward": 0, "totalCash": 141645}, {"branch": "거제지점", "name": "최미화", "code": "1D5463", "daily": 100970, "active": 1, "highcap": 2595739, "insurance": 100970, "rate": 1.5, "highcapAward": 151455, "dailyAward": 50000, "totalCash": 201455}, {"branch": "거제지점", "name": "박현아", "code": "1D7081", "daily": 100730, "active": 1, "highcap": 3247930, "insurance": 100730, "rate": 1.5, "highcapAward": 151095, "dailyAward": 50000, "totalCash": 201095}, {"branch": "거제지점", "name": "대한옥포", "code": "857670", "daily": 308000, "active": 1, "highcap": 6204009, "insurance": 308000, "rate": 1.5, "highcapAward": 462000, "dailyAward": 150000, "totalCash": 612000}, {"branch": "거제지점", "name": "송현숙", "code": "985449", "daily": 125950, "active": 1, "highcap": 2627012, "insurance": 125950, "rate": 1.5, "highcapAward": 188925, "dailyAward": 50000, "totalCash": 238925}, {"branch": "통영지점", "name": "이수미", "code": "159481", "daily": 131890, "active": 1, "highcap": 212739, "insurance": 131890, "rate": 1.1, "highcapAward": 145079, "dailyAward": 50000, "totalCash": 195079}, {"branch": "통영지점", "name": "정미리", "code": "190045", "daily": 53020, "active": 1, "highcap": 2312355, "insurance": 53020, "rate": 1.5, "highcapAward": 79530, "dailyAward": 0, "totalCash": 79530}, {"branch": "옥포지점", "name": "이정미", "code": "154098", "daily": 60750, "active": 1, "highcap": 1573930, "insurance": 60750, "rate": 1.5, "highcapAward": 91125, "dailyAward": 0, "totalCash": 91125}, {"branch": "옥포지점", "name": "강윤아", "code": "1A4556", "daily": 20090, "active": 0, "highcap": 0, "insurance": 0, "rate": 0, "highcapAward": 0, "dailyAward": 0, "totalCash": 0}, {"branch": "옥포지점", "name": "서미화", "code": "1A4831", "daily": 199590, "active": 1, "highcap": 3268810, "insurance": 180920, "rate": 1.5, "highcapAward": 271380, "dailyAward": 50000, "totalCash": 321380}, {"branch": "동진주지점", "name": "박춘자", "code": "022522", "daily": 114350, "active": 1, "highcap": 2715536, "insurance": 114350, "rate": 1.5, "highcapAward": 171525, "dailyAward": 50000, "totalCash": 221525}, {"branch": "동진주지점", "name": "박은희", "code": "089344", "daily": 16030, "active": 0, "highcap": 384845, "insurance": 16030, "rate": 1.1, "highcapAward": 17633, "dailyAward": 0, "totalCash": 17633}, {"branch": "동진주지점", "name": "허성하", "code": "129957", "daily": 44520, "active": 0, "highcap": 0, "insurance": 0, "rate": 0, "highcapAward": 0, "dailyAward": 0, "totalCash": 0}, {"branch": "동진주지점", "name": "신영주", "code": "145781", "daily": 198180, "active": 1, "highcap": 2802968, "insurance": 198180, "rate": 1.5, "highcapAward": 297270, "dailyAward": 50000, "totalCash": 347270}, {"branch": "동진주지점", "name": "강태형", "code": "1B0290", "daily": 447860, "active": 1, "highcap": 9144800, "insurance": 447860, "rate": 1.5, "highcapAward": 671790, "dailyAward": 200000, "totalCash": 871790}, {"branch": "동진주지점", "name": "이재영", "code": "1D6427", "daily": 198250, "active": 1, "highcap": 3399903, "insurance": 181670, "rate": 1.5, "highcapAward": 272505, "dailyAward": 50000, "totalCash": 322505}, {"branch": "충무지점", "name": "윤소영", "code": "140182", "daily": 79162, "active": 1, "highcap": 1150729, "insurance": 90350, "rate": 1.4, "highcapAward": 126490, "dailyAward": 0, "totalCash": 126490}, {"branch": "충무지점", "name": "구나희", "code": "1B0118", "daily": 228930, "active": 1, "highcap": 4653815, "insurance": 228930, "rate": 1.5, "highcapAward": 343395, "dailyAward": 100000, "totalCash": 443395}, {"branch": "충무지점", "name": "김봉숙", "code": "1D9913", "daily": 91680, "active": 1, "highcap": 2163107, "insurance": 91680, "rate": 1.5, "highcapAward": 137520, "dailyAward": 0, "totalCash": 137520}, {"branch": "충무지점", "name": "영록", "code": "899850", "daily": 256870, "active": 1, "highcap": 5372150, "insurance": 256870, "rate": 1.5, "highcapAward": 385305, "dailyAward": 100000, "totalCash": 485305}, {"branch": "진주TC지점", "name": "강원주", "code": "1C1775", "daily": 121240, "active": 1, "highcap": 1680879, "insurance": 121240, "rate": 1.5, "highcapAward": 181860, "dailyAward": 50000, "totalCash": 231860}, {"branch": "마산지점", "name": "박윤주", "code": "130320", "daily": 219680, "active": 1, "highcap": 2965550, "insurance": 219680, "rate": 1.5, "highcapAward": 329520, "dailyAward": 100000, "totalCash": 429520}, {"branch": "마산지점", "name": "김동완", "code": "1A0050", "daily": 264960, "active": 1, "highcap": 6403701, "insurance": 264960, "rate": 1.5, "highcapAward": 397440, "dailyAward": 100000, "totalCash": 497440}, {"branch": "마산지점", "name": "한강", "code": "959457", "daily": 197430, "active": 1, "highcap": 5378121, "insurance": 197430, "rate": 1.5, "highcapAward": 296145, "dailyAward": 50000, "totalCash": 346145}, {"branch": "마산지점", "name": "호두", "code": "965988", "daily": 10000, "active": 0, "highcap": 52234, "insurance": 10000, "rate": 0, "highcapAward": 0, "dailyAward": 0, "totalCash": 0}, {"branch": "창원지점", "name": "오현미", "code": "070131", "daily": 50530, "active": 1, "highcap": 1007326, "insurance": 50530, "rate": 1.4, "highcapAward": 70742, "dailyAward": 0, "totalCash": 70742}, {"branch": "창원지점", "name": "이두리", "code": "100187", "daily": 277110, "active": 1, "highcap": 3925064, "insurance": 277110, "rate": 1.5, "highcapAward": 415665, "dailyAward": 100000, "totalCash": 515665}, {"branch": "창원지점", "name": "김영자", "code": "102172", "daily": 224260, "active": 1, "highcap": 3118127, "insurance": 224260, "rate": 1.5, "highcapAward": 336390, "dailyAward": 100000, "totalCash": 436390}, {"branch": "창원지점", "name": "전은영", "code": "1A6977", "daily": 57140, "active": 1, "highcap": 646821, "insurance": 57140, "rate": 1.3, "highcapAward": 74282, "dailyAward": 0, "totalCash": 74282}, {"branch": "창원지점", "name": "김민애", "code": "1C1904", "daily": 52090, "active": 1, "highcap": 1835832, "insurance": 52090, "rate": 1.5, "highcapAward": 78135, "dailyAward": 0, "totalCash": 78135}, {"branch": "창원지점", "name": "권혜정", "code": "1D6260", "daily": 27300, "active": 0, "highcap": 391014, "insurance": 27300, "rate": 1.1, "highcapAward": 30030, "dailyAward": 0, "totalCash": 30030}, {"branch": "창원지점", "name": "최혜숙보험대리점", "code": "969806", "daily": 107040, "active": 1, "highcap": 1948644, "insurance": 107040, "rate": 1.5, "highcapAward": 160560, "dailyAward": 50000, "totalCash": 210560}, {"branch": "경남미래지점", "name": "김순자", "code": "079052", "daily": 77030, "active": 1, "highcap": 1913421, "insurance": 77030, "rate": 1.5, "highcapAward": 115545, "dailyAward": 0, "totalCash": 115545}, {"branch": "경남미래지점", "name": "박경옥", "code": "116984", "daily": 56780, "active": 1, "highcap": 1368796, "insurance": 56780, "rate": 1.4, "highcapAward": 79492, "dailyAward": 0, "totalCash": 79492}, {"branch": "경남미래지점", "name": "정인주", "code": "1A4837", "daily": 10000, "active": 0, "highcap": 128734, "insurance": 10000, "rate": 1.0, "highcapAward": 10000, "dailyAward": 0, "totalCash": 10000}, {"branch": "경남미래지점", "name": "권대경", "code": "1C3981", "daily": 56950, "active": 1, "highcap": 1213858, "insurance": 56950, "rate": 1.4, "highcapAward": 79730, "dailyAward": 0, "totalCash": 79730}, {"branch": "경남미래지점", "name": "밀양현대", "code": "971864", "daily": 112920, "active": 1, "highcap": 3125245, "insurance": 112920, "rate": 1.5, "highcapAward": 169380, "dailyAward": 50000, "totalCash": 219380}, {"branch": "경남미래지점", "name": "임광욱", "code": "977282", "daily": 187090, "active": 1, "highcap": 2457115, "insurance": 187090, "rate": 1.5, "highcapAward": 280635, "dailyAward": 50000, "totalCash": 330635}, {"branch": "경남드림영업실", "name": "김해리", "code": "9A7523", "daily": 11020, "active": 0, "highcap": 0, "insurance": 0, "rate": 0, "highcapAward": 0, "dailyAward": 0, "totalCash": 0}];
+
+const won = n => Number(n || 0).toLocaleString('ko-KR') + '원';
+
+function getHighcapRate(v) {
+  if (v >= 14000000) return 1.50;
+  if (v >= 10000000) return 1.40;
+  if (v >= 6000000) return 1.30;
+  if (v >= 4000000) return 1.20;
+  if (v >= 2000000) return 1.10;
+  if (v >= 1000000) return 1.00;
+  return 0;
+}
+
+function getDailyAward(v) {
+  if (v >= 500000) return 250000;
+  if (v >= 400000) return 200000;
+  if (v >= 300000) return 150000;
+  if (v >= 200000) return 100000;
+  if (v >= 100000) return 50000;
+  return 0;
+}
+
+function rateText(rate) {
+  return rate ? Math.round(rate * 100) + '%' : '미달성';
+}
+
+function normalizeCode(value) {
+  return String(value ?? '')
+    .trim()
+    .toUpperCase()
+    .replace(/[\s-]/g, '');
+}
+
+function findPerson(code) {
+  const key = normalizeCode(code);
+  if (!key) return undefined;
+
+  // 1) exact match (alphanumeric codes included)
+  let found = DATA.find(x => normalizeCode(x.code) === key);
+  if (found) return found;
+
+  // 2) numeric code fallback: accepts omitted leading zeros (e.g. 22522 → 022522)
+  if (/^\d+$/.test(key)) {
+    const numericKey = String(Number(key));
+    found = DATA.find(x => {
+      const c = normalizeCode(x.code);
+      return /^\d+$/.test(c) && String(Number(c)) === numericKey;
+    });
+  }
+  return found;
+}
+
+function render(person) {
+  const rate = getHighcapRate(person.highcap);
+  const highcapAward = Math.round(person.insurance * rate);
+  const dailyAward = getDailyAward(person.daily);
+  const total = highcapAward + dailyAward;
+
+  document.getElementById('name').textContent = person.name;
+  document.getElementById('branch').textContent = person.branch;
+  document.getElementById('codeBadge').textContent = person.code;
+  document.getElementById('daily').textContent = won(person.daily);
+  document.getElementById('highcap').textContent = won(person.highcap);
+  document.getElementById('insurance').textContent = won(person.insurance);
+
+  document.getElementById('rateTag').textContent = rateText(rate);
+  document.getElementById('highcapAward').textContent = rate ? won(highcapAward) : '지급 없음';
+  document.getElementById('highcapDetail').textContent = rate
+    ? '인보험실적 ' + won(person.insurance) + ' × 지급률 ' + Math.round(rate*100) + '%'
+    : '하이캡실적 100만원 미만으로 지급률 구간 미달';
+
+  const active = Number(person.active) === 1;
+  document.getElementById('activeTag').textContent = active ? '달성' : '미달성';
+  document.getElementById('activeAward').textContent = active ? '아산 맑은 쌀 10KG 지급' : '지급 없음';
+
+  document.getElementById('dailyTag').textContent = dailyAward ? '달성' : '미달성';
+  document.getElementById('dailyAward').textContent = dailyAward ? won(dailyAward) : '지급 없음';
+  document.getElementById('dailyDetail').textContent = dailyAward
+    ? '현재 일별실적 ' + won(person.daily) + ' 기준'
+    : '현재 일별실적 ' + won(person.daily) + ' · 10만원 이상부터 지급';
+
+  document.getElementById('totalCash').textContent = won(total);
+  document.getElementById('error').style.display = 'none';
+  document.getElementById('result').style.display = 'block';
+}
+
+function search() {
+  const p = findPerson(document.getElementById('codeInput').value);
+  if (!p) {
+    document.getElementById('result').style.display = 'none';
+    document.getElementById('error').textContent = '해당 코드를 찾을 수 없습니다. 코드를 다시 확인해주세요.';
+    document.getElementById('error').style.display = 'block';
+    return;
+  }
+  render(p);
+}
+
+document.getElementById('searchBtn').addEventListener('click', search);
+document.getElementById('codeInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') search();
+});
+</script>
+</body>
+</html>
