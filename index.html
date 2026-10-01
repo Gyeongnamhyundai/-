@@ -51,8 +51,11 @@ button{height:52px;padding:0 18px;border:0;border-radius:14px;background:var(--n
 .note{margin-top:14px;background:#fff;border:1px dashed #d7deea;border-radius:16px;padding:14px;font-size:13px;color:#596277;line-height:1.65}
 .error{display:none;margin-top:14px;background:#fff0f0;border:1px solid #ffd0d0;color:#a33131;border-radius:14px;padding:14px;font-size:14px;font-weight:700}
 .footer{text-align:center;color:#8a93a7;font-size:12px;margin-top:24px;line-height:1.6}
+.topNotice{background:#fff0f0;border:2px solid #ff7b7b;color:#c91f1f;border-radius:20px;padding:20px 18px;margin-bottom:16px;text-align:center;box-shadow:0 10px 24px rgba(201,31,31,.08)}
+.topNotice .line1{font-size:24px;font-weight:900;line-height:1.45;letter-spacing:-.4px}
+.topNotice .line2{font-size:21px;font-weight:900;line-height:1.45;letter-spacing:-.4px;margin-top:6px}
 @media(max-width:520px){
- .wrap{padding:16px 12px 32px} .hero{padding:22px 17px} .hero h1{font-size:25px}
+ .wrap{padding:16px 12px 32px} .hero{padding:22px 17px} .hero h1{font-size:25px} .topNotice{padding:18px 14px} .topNotice .line1{font-size:20px} .topNotice .line2{font-size:18px}
  .row{flex-direction:column} button{width:100%} .metrics{grid-template-columns:1fr}
  .metric{display:flex;justify-content:space-between;text-align:left;align-items:center;padding:13px 14px}
  .metric .k{margin:0} .metric .v{font-size:15px}
@@ -61,6 +64,11 @@ button{height:52px;padding:0 18px;border:0;border-radius:14px;background:var(--n
 </head>
 <body>
 <div class="wrap">
+  <section class="topNotice">
+    <div class="line1">본 화면은 10/1 17시 기준 실적으로 계산한 시상 진도입니다.</div>
+    <div class="line2">실적 변동 및 최종 평가 기준에 따라 지급 결과가 달라질 수 있습니다.</div>
+  </section>
+
   <section class="hero">
     <h1>10월 1주차 시상 진도</h1>
     <p>데이터 조회기준 : 10/1 17시 기준</p>
@@ -129,11 +137,6 @@ button{height:52px;padding:0 18px;border:0;border-radius:14px;background:var(--n
         </div>
         <div class="totalValue" id="totalCash"></div>
       </div>
-    </div>
-
-    <div class="note">
-      본 화면은 <b>10/1 17시 기준 실적</b>으로 계산한 시상 진도입니다.<br>
-      실적 변동 및 최종 평가 기준에 따라 지급 결과가 달라질 수 있습니다.
     </div>
   </section>
 
