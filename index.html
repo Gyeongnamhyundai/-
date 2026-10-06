@@ -2,251 +2,192 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>10월 1주차 시상 진도</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>10월 2주차 시상 조회</title>
 <style>
 :root {
-  --bg:#f5f7fb; --card:#ffffff; --ink:#172033; --muted:#6f7890;
-  --line:#e7ebf2; --navy:#1f3b68; --navy2:#2e568d; --soft:#eef4fb;
-  --green:#177a57; --greenbg:#eaf7f1; --gold:#9a6b00; --goldbg:#fff6dc;
+  --navy:#17375e; --blue:#2f62c9; --bg:#f4f7fb; --line:#dce3ec;
+  --muted:#687587; --green:#176b50; --red:#b33a3a; --pale:#eef4fc;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",Segoe UI,sans-serif}
-.wrap{max-width:720px;margin:0 auto;padding:24px 16px 44px}
-.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:white;border-radius:22px;padding:24px 20px;box-shadow:0 12px 28px rgba(31,59,104,.18)}
-.hero h1{font-size:28px;line-height:1.25;margin:0 0 8px;font-weight:800;letter-spacing:-.5px}
-.hero p{margin:0;opacity:.88;font-size:15px}
-.search{margin-top:16px;background:white;border-radius:18px;padding:16px;box-shadow:0 8px 24px rgba(23,32,51,.08)}
-.label{font-size:14px;font-weight:700;margin-bottom:8px}
-.row{display:flex;gap:8px}
-input{flex:1;min-width:0;height:52px;border:1.5px solid #d8dfeb;border-radius:14px;padding:0 16px;font-size:18px;font-weight:700;outline:none;text-transform:uppercase}
-input:focus{border-color:var(--navy2);box-shadow:0 0 0 4px rgba(46,86,141,.10)}
-button{height:52px;padding:0 18px;border:0;border-radius:14px;background:var(--navy);color:white;font-size:16px;font-weight:800;cursor:pointer}
-.help{font-size:12.5px;color:var(--muted);margin-top:9px}
-#result{display:none;margin-top:16px}
-.person{background:white;border-radius:18px;padding:18px;box-shadow:0 8px 24px rgba(23,32,51,.07);border:1px solid var(--line)}
-.personTop{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
-.person h2{margin:0;font-size:24px}
-.branch{font-size:13px;color:var(--muted);margin-top:5px}
-.codeBadge{font-size:13px;font-weight:800;background:var(--soft);color:var(--navy);padding:7px 10px;border-radius:999px}
-.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
-.metric{background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:12px 10px;text-align:center}
-.metric .k{font-size:12px;color:var(--muted);margin-bottom:5px}
-.metric .v{font-size:16px;font-weight:800;word-break:keep-all}
-.sectionTitle{font-size:15px;font-weight:800;color:#39435a;margin:18px 2px 10px}
-.award{background:white;border-radius:18px;padding:17px;margin-top:10px;border:1px solid var(--line);box-shadow:0 7px 18px rgba(23,32,51,.05)}
-.awardHead{display:flex;justify-content:space-between;gap:10px;align-items:center}
-.awardName{font-size:16px;font-weight:800}
-.tag{font-size:12px;font-weight:800;border-radius:999px;padding:6px 9px;background:var(--soft);color:var(--navy)}
-.awardMain{font-size:24px;font-weight:900;margin-top:10px;letter-spacing:-.4px}
-.detail{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5}
-.rice{background:var(--greenbg);border-color:#ccebdd}
-.rice .awardMain{color:var(--green)}
-.cash{background:var(--goldbg);border-color:#f0dfac}
-.cash .awardMain{color:var(--gold)}
-.total{margin-top:14px;background:#172033;color:white;border-radius:18px;padding:18px}
-.totalLine{display:flex;justify-content:space-between;align-items:end;gap:12px}
-.totalLabel{font-size:14px;opacity:.78}
-.totalValue{font-size:28px;font-weight:900}
-.note{margin-top:14px;background:#fff;border:1px dashed #d7deea;border-radius:16px;padding:14px;font-size:13px;color:#596277;line-height:1.65}
-.error{display:none;margin-top:14px;background:#fff0f0;border:1px solid #ffd0d0;color:#a33131;border-radius:14px;padding:14px;font-size:14px;font-weight:700}
-.footer{text-align:center;color:#8a93a7;font-size:12px;margin-top:24px;line-height:1.6}
+body{margin:0;background:var(--bg);color:#1f2937;font:17px/1.55 system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+main{max-width:700px;margin:auto;padding:24px 16px 44px}
+.kicker{font-weight:850;color:var(--blue);font-size:14px;letter-spacing:.02em}
+h1{font-size:clamp(28px,7vw,38px);line-height:1.2;margin:7px 0 6px;color:#172b4d}
+.sub{color:var(--muted);margin:0 0 6px}
+.asof{font-weight:850;color:var(--navy);margin:4px 0 18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:21px;margin:15px 0;box-shadow:0 4px 18px rgba(22,52,88,.04)}
+h2{font-size:20px;margin:0 0 14px}
+.search{display:flex;gap:10px}
+input,button{font:inherit;min-height:56px;border-radius:12px}
+input{flex:1;min-width:0;padding:12px 14px;border:1px solid #aebac8;font-size:18px}
+button{border:0;padding:12px 20px;font-weight:800;cursor:pointer}
+.primary{background:var(--blue);color:white}
+.secondary{background:#e9eef5;color:var(--navy);width:100%}
+.status{margin-top:12px;font-weight:700}
+.error{color:var(--red)} .success{color:var(--green)}
+.person{background:var(--pale);padding:16px;border-radius:13px;margin-bottom:13px}
+.person strong{font-size:26px;color:var(--navy)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.metric{border:1px solid var(--line);border-radius:13px;padding:14px;min-width:0}
+.label{color:var(--muted);font-size:14px}
+.value{font-size:clamp(19px,5vw,24px);font-weight:850;overflow-wrap:anywhere}
+.payout{background:#eff8f3;border:1px solid #bedfd1;border-radius:15px;padding:19px;margin-top:15px}
+.payout .title{font-weight:800}
+.amount{font-size:clamp(32px,8vw,43px);font-weight:900;color:var(--green);margin:2px 0}
+.note{font-size:14px;color:var(--muted);margin-top:4px}
+.criteria{font-size:14px;color:#475569;line-height:1.8}
+.criteria strong{color:var(--navy)}
+[hidden]{display:none!important}
+footer{font-size:13px;color:var(--muted);text-align:center;margin-top:18px}
+@media(max-width:460px){
+  main{padding:18px 12px 38px} .card{padding:17px}
+  .search{flex-direction:column} .search button{width:100%}
+}
+
 .topNotice{background:#fff0f0;border:2px solid #ff7b7b;color:#c91f1f;border-radius:20px;padding:20px 18px;margin-bottom:16px;text-align:center;box-shadow:0 10px 24px rgba(201,31,31,.08)}
 .topNotice .line1{font-size:24px;font-weight:900;line-height:1.45;letter-spacing:-.4px}
 .topNotice .line2{font-size:22px;font-weight:900;line-height:1.4;letter-spacing:-.4px;margin-top:8px}
 .topNotice .line3{font-size:20px;font-weight:900;line-height:1.4;letter-spacing:-.4px;margin-top:8px}
 @media(max-width:520px){
- .wrap{padding:16px 12px 32px} .hero{padding:22px 17px} .hero h1{font-size:25px} .topNotice{padding:18px 14px} .topNotice .line1{font-size:22px} .topNotice .line2{font-size:19px} .topNotice .line3{font-size:17px}
- .row{flex-direction:column} button{width:100%} .metrics{grid-template-columns:1fr}
- .metric{display:flex;justify-content:space-between;text-align:left;align-items:center;padding:13px 14px}
- .metric .k{margin:0} .metric .v{font-size:15px}
+  .topNotice{padding:18px 14px}
+  .topNotice .line1{font-size:22px}
+  .topNotice .line2{font-size:19px}
+  .topNotice .line3{font-size:17px}
 }
+
 </style>
 </head>
 <body>
-<div class="wrap">
+<main>
+
   <section class="topNotice">
-    <div class="line1">* 10/2 13시 20분 시상진도</div>
-    <div class="line2">* 아래실적은 최종 실적및 시상금 아님</div>
+    <div class="line1">* 10/5 마감 기준 시상진도</div>
+    <div class="line2">* 아래 실적은 최종 실적 및 시상금 아님</div>
     <div class="line3">추후 실적 및 시상금 변동 가능성 있음</div>
   </section>
 
-  <section class="hero">
-    <h1>10월 1주차 시상 진도</h1>
-    <p>데이터 조회기준 : 10/2 13시 20분 기준</p>
+  <div class="kicker">하이플래너 · WEEKLY AWARDS</div>
+  <h1>10월 2주차 시상 조회</h1>
+  <p class="sub">본인 코드를 입력하면 현재 실적과 예상 시상금을 확인할 수 있어요.</p>
+  <p class="asof">데이터 조회 기준 : 10/5 마감 기준</p>
+
+  <section class="card">
+    <h2>본인 코드 입력</h2>
+    <form id="form" class="search">
+      <input id="code" inputmode="text" autocomplete="off" autocapitalize="characters"
+             placeholder="하이플래너 코드 입력" aria-label="하이플래너 코드" required>
+      <button class="primary" type="submit">내 시상 조회</button>
+    </form>
+    <div id="msg" class="status" aria-live="polite"></div>
   </section>
 
-  <section class="search">
-    <div class="label">설계사 코드를 입력해주세요</div>
-    <div class="row">
-      <input id="codeInput" inputmode="text" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" placeholder="예: 154595">
-      <button id="searchBtn" type="button">조회하기</button>
+  <section id="results" class="card" hidden>
+    <h2>내 실적 및 시상 결과</h2>
+    <div class="person">하이플래너 <strong id="name"></strong></div>
+
+    <div class="grid">
+      <div class="metric">
+        <div class="label">인보험 실적</div>
+        <div class="value" id="insurance"></div>
+      </div>
+      <div class="metric">
+        <div class="label">장기 하이캡 누계실적</div>
+        <div class="value" id="hiccap"></div>
+      </div>
     </div>
-    <div class="help">영문이 포함된 코드는 대·소문자 구분 없이 조회됩니다.</div>
-    <div id="error" class="error">조회되는 코드가 없습니다. 코드를 다시 확인해주세요.</div>
+
+    <div class="payout">
+      <div class="title">하이캡 구간 지급 시상금</div>
+      <div class="amount" id="award"></div>
+      <div class="note" id="rate"></div>
+      <div class="note" id="formula"></div>
+      <div id="eligibility" class="status"></div>
+    </div>
+
+    <button id="reset" class="secondary" type="button">다시 조회하기</button>
   </section>
 
-  <section id="result">
-    <div class="person">
-      <div class="personTop">
-        <div>
-          <h2 id="name"></h2>
-          <div class="branch" id="branch"></div>
-        </div>
-        <div class="codeBadge" id="codeBadge"></div>
-      </div>
-      <div class="metrics">
-        <div class="metric"><div class="k">일별실적</div><div class="v" id="daily"></div></div>
-        <div class="metric"><div class="k">하이캡실적</div><div class="v" id="highcap"></div></div>
-        <div class="metric"><div class="k">인보험실적(관리사항 적용)</div><div class="v" id="insurance"></div></div>
-      </div>
-    </div>
-
-    <div class="sectionTitle">시상 진도</div>
-
-    <div class="award">
-      <div class="awardHead">
-        <div class="awardName">① 하이캡 구간 시상금</div>
-        <div class="tag" id="rateTag"></div>
-      </div>
-      <div class="awardMain" id="highcapAward"></div>
-      <div class="detail" id="highcapDetail"></div>
-    </div>
-
-    <div class="award rice">
-      <div class="awardHead">
-        <div class="awardName">② 유실적 시상</div>
-        <div class="tag" id="activeTag"></div>
-      </div>
-      <div class="awardMain" id="activeAward"></div>
-      <div class="detail">※ 유실적 기본활동 달성 전제로 평가</div>
-    </div>
-
-    <div class="award cash">
-      <div class="awardHead">
-        <div class="awardName">③ 일별실적 현금 시상</div>
-        <div class="tag" id="dailyTag"></div>
-      </div>
-      <div class="awardMain" id="dailyAward"></div>
-      <div class="detail" id="dailyDetail"></div>
-    </div>
-
-    <div class="total">
-      <div class="totalLine">
-        <div>
-          <div class="totalLabel">예상 현금 시상 합계</div>
-          <div style="font-size:12px;opacity:.66;margin-top:4px">하이캡 시상금 + 일별 현금 시상</div>
-        </div>
-        <div class="totalValue" id="totalCash"></div>
-      </div>
+  <section class="card">
+    <h2>시상 기준</h2>
+    <div class="criteria">
+      <strong>1,400만원 이상</strong> 140% ·
+      <strong>1,000만원 이상</strong> 130% ·
+      <strong>600만원 이상</strong> 120% ·
+      <strong>400만원 이상</strong> 110% ·
+      <strong>200만원 이상</strong> 100% ·
+      <strong>100만원 이상</strong> 90%
+      <br>
+      ※ 시상금 = 인보험 실적 × 하이캡 누계실적 구간별 지급률
     </div>
   </section>
 
-  <div class="footer">경남지역단 · 10월 1주차 시상 진도 조회</div>
-</div>
+  <footer>경남지역단 · 10월 2주차 시상 진도 조회</footer>
+</main>
 
 <script>
-const DATA = [{"branch":"진주지점","name":"민분순","code":"132950","daily":17960,"active":0,"highcap":183663,"insurance":17960},{"branch":"진주지점","name":"오선화","code":"154595","daily":100000,"active":1,"highcap":2097007,"insurance":100000},{"branch":"진주지점","name":"서호정","code":"197453","daily":64040,"active":1,"highcap":1666634,"insurance":64040},{"branch":"진주지점","name":"황미옥","code":"1A8328","daily":60650,"active":1,"highcap":1694439,"insurance":60650},{"branch":"진주지점","name":"이은진","code":"1C6287","daily":109260,"active":1,"highcap":1255804,"insurance":78700},{"branch":"진주지점","name":"K1","code":"962283","daily":128550,"active":1,"highcap":2417917,"insurance":128550},{"branch":"진주지점","name":"정기성","code":"989620","daily":83340,"active":1,"highcap":2038061,"insurance":83340},{"branch":"거제지점","name":"최금례","code":"159997","daily":181680,"active":1,"highcap":4140156,"insurance":163010},{"branch":"거제지점","name":"임정화","code":"193225","daily":135000,"active":1,"highcap":1505361,"insurance":111640},{"branch":"거제지점","name":"허정아","code":"1A0151","daily":50420,"active":1,"highcap":709824,"insurance":50420},{"branch":"거제지점","name":"윤선미","code":"1C8229","daily":171930,"active":1,"highcap":2067547,"insurance":171930},{"branch":"거제지점","name":"정현주","code":"1C9197","daily":96330,"active":1,"highcap":828512,"insurance":77660},{"branch":"거제지점","name":"강주희","code":"1D3869","daily":327210,"active":1,"highcap":2569416,"insurance":327210},{"branch":"거제지점","name":"최미화","code":"1D5463","daily":100970,"active":1,"highcap":2595739,"insurance":100970},{"branch":"거제지점","name":"박현아","code":"1D7081","daily":100730,"active":1,"highcap":3247930,"insurance":100730},{"branch":"거제지점","name":"대한옥포","code":"857670","daily":308000,"active":1,"highcap":6204009,"insurance":308000},{"branch":"거제지점","name":"송현숙","code":"985449","daily":125950,"active":1,"highcap":2627012,"insurance":125950},{"branch":"통영지점","name":"이수미","code":"159481","daily":131890,"active":1,"highcap":212739,"insurance":131890},{"branch":"통영지점","name":"정미리","code":"190045","daily":53020,"active":1,"highcap":2312355,"insurance":53020},{"branch":"통영지점","name":"조정애","code":"1C8509","daily":59820,"active":1,"highcap":1640996,"insurance":59820},{"branch":"옥포지점","name":"이정미","code":"154098","daily":60750,"active":1,"highcap":1573930,"insurance":60750},{"branch":"옥포지점","name":"박진","code":"194736","daily":25590,"active":0,"highcap":0,"insurance":0},{"branch":"옥포지점","name":"강윤아","code":"1A4556","daily":20090,"active":0,"highcap":0,"insurance":0},{"branch":"옥포지점","name":"서미화","code":"1A4831","daily":199590,"active":1,"highcap":3268810,"insurance":180920},{"branch":"동진주지점","name":"박춘자","code":"022522","daily":114350,"active":1,"highcap":2715536,"insurance":114350},{"branch":"동진주지점","name":"박은희","code":"089344","daily":16030,"active":0,"highcap":384845,"insurance":16030},{"branch":"동진주지점","name":"김평구","code":"108272","daily":50430,"active":1,"highcap":1219258,"insurance":50430},{"branch":"동진주지점","name":"허성하","code":"129957","daily":44520,"active":0,"highcap":0,"insurance":0},{"branch":"동진주지점","name":"신영주","code":"145781","daily":198180,"active":1,"highcap":2802968,"insurance":198180},{"branch":"동진주지점","name":"강태형","code":"1B0290","daily":701400,"active":1,"highcap":14645873,"insurance":701400},{"branch":"동진주지점","name":"임유택","code":"1D6226","daily":312320,"active":1,"highcap":9763253,"insurance":312320},{"branch":"동진주지점","name":"이재영","code":"1D6427","daily":248250,"active":1,"highcap":3468910,"insurance":231670},{"branch":"충무지점","name":"윤소영","code":"140182","daily":79162,"active":1,"highcap":1150729,"insurance":90350},{"branch":"충무지점","name":"구나희","code":"1B0118","daily":228930,"active":1,"highcap":4653815,"insurance":228930},{"branch":"충무지점","name":"김봉숙","code":"1D9913","daily":91680,"active":1,"highcap":2163107,"insurance":91680},{"branch":"충무지점","name":"영록","code":"899850","daily":256870,"active":1,"highcap":5372150,"insurance":256870},{"branch":"진주TC지점","name":"이다민","code":"102139","daily":149230,"active":1,"highcap":3040891,"insurance":149230},{"branch":"진주TC지점","name":"강원주","code":"1C1775","daily":121240,"active":1,"highcap":1680879,"insurance":121240},{"branch":"진주TC지점","name":"임효정","code":"1C8709","daily":42320,"active":0,"highcap":0,"insurance":0},{"branch":"진주TC지점","name":"강미진","code":"1D7767","daily":107510,"active":1,"highcap":1254571,"insurance":88840},{"branch":"마산지점","name":"박윤주","code":"130320","daily":219680,"active":1,"highcap":2965550,"insurance":219680},{"branch":"마산지점","name":"김동완","code":"1A0050","daily":264960,"active":1,"highcap":6403701,"insurance":264960},{"branch":"마산지점","name":"현시","code":"768170","daily":20000,"active":0,"highcap":55701,"insurance":20000},{"branch":"마산지점","name":"한강","code":"959457","daily":197430,"active":1,"highcap":5378121,"insurance":197430},{"branch":"마산지점","name":"호두","code":"965988","daily":10000,"active":0,"highcap":52234,"insurance":10000},{"branch":"마산지점","name":"퍼펙트마산보험대리점","code":"969251","daily":86320,"active":1,"highcap":939239,"insurance":86320},{"branch":"마산지점","name":"장미자","code":"9A1769","daily":209610,"active":1,"highcap":2079427,"insurance":209610},{"branch":"창원지점","name":"오현미","code":"070131","daily":50530,"active":1,"highcap":1007326,"insurance":50530},{"branch":"창원지점","name":"이두리","code":"100187","daily":277110,"active":1,"highcap":3925064,"insurance":277110},{"branch":"창원지점","name":"김영자","code":"102172","daily":224260,"active":1,"highcap":3118127,"insurance":224260},{"branch":"창원지점","name":"서현주","code":"129237","daily":107760,"active":1,"highcap":2223112,"insurance":107760},{"branch":"창원지점","name":"전은영","code":"1A6977","daily":57140,"active":1,"highcap":646821,"insurance":57140},{"branch":"창원지점","name":"김민애","code":"1C1904","daily":52090,"active":1,"highcap":1835832,"insurance":52090},{"branch":"창원지점","name":"권혜정","code":"1D6260","daily":27300,"active":0,"highcap":391014,"insurance":27300},{"branch":"창원지점","name":"최혜숙보험대리점","code":"969806","daily":107040,"active":1,"highcap":1948644,"insurance":107040},{"branch":"창원지점","name":"박다혜보험대리점","code":"989614","daily":100730,"active":1,"highcap":1338464,"insurance":100730},{"branch":"경남미래지점","name":"김순자","code":"079052","daily":77030,"active":1,"highcap":1913421,"insurance":77030},{"branch":"경남미래지점","name":"박경옥","code":"116984","daily":56780,"active":1,"highcap":1368796,"insurance":56780},{"branch":"경남미래지점","name":"최미자","code":"118688","daily":121780,"active":1,"highcap":3043053,"insurance":121780},{"branch":"경남미래지점","name":"정인주","code":"1A4837","daily":10000,"active":0,"highcap":128734,"insurance":10000},{"branch":"경남미래지점","name":"권대경","code":"1C3981","daily":56950,"active":1,"highcap":1213858,"insurance":56950},{"branch":"경남미래지점","name":"조경숙","code":"966306","daily":44770,"active":0,"highcap":102996,"insurance":15370},{"branch":"경남미래지점","name":"밀양현대","code":"971864","daily":229250,"active":1,"highcap":4353320,"insurance":229250},{"branch":"경남미래지점","name":"임광욱","code":"977282","daily":187090,"active":1,"highcap":2457115,"insurance":187090},{"branch":"경남미래지점","name":"정윤인슈","code":"9A3498","daily":207760,"active":1,"highcap":3586933,"insurance":207760},{"branch":"경남드림영업실","name":"김해리","code":"9A7523","daily":11020,"active":0,"highcap":0,"insurance":0}];
+const DATA = [{"code": "129635", "name": "최경옥", "insurance": 147400, "hiccap": 3366607}, {"code": "196734", "name": "오미숙", "insurance": 142430, "hiccap": 1720058}, {"code": "768170", "name": "황남필", "insurance": 113450, "hiccap": 1897895}, {"code": "959457", "name": "박종규", "insurance": 88750, "hiccap": 1752335}, {"code": "1B4094", "name": "신애리", "insurance": 129470, "hiccap": 2308996}, {"code": "145750", "name": "최순규", "insurance": 102890, "hiccap": 2399717}, {"code": "989620", "name": "정기성", "insurance": 189750, "hiccap": 3987517}, {"code": "149319", "name": "박중길", "insurance": 130350, "hiccap": 2182690}, {"code": "1D9663", "name": "장지숙", "insurance": 43190, "hiccap": 1795422}, {"code": "045164", "name": "심영숙", "insurance": 57070, "hiccap": 1550575}, {"code": "131021", "name": "김연호", "insurance": 130680, "hiccap": 2000283}, {"code": "198390", "name": "심명찬", "insurance": 125150, "hiccap": 3928881}, {"code": "140154", "name": "서선희", "insurance": 110170, "hiccap": 2414410}, {"code": "1B0626", "name": "김현주", "insurance": 70220, "hiccap": 1941038}, {"code": "1C8509", "name": "조정애", "insurance": 124830, "hiccap": 2440841}, {"code": "154098", "name": "이정미", "insurance": 55430, "hiccap": 1371819}, {"code": "194736", "name": "박진", "insurance": 106420, "hiccap": 1969998}, {"code": "1D7330", "name": "김희주", "insurance": 318040, "hiccap": 9926200}, {"code": "964798", "name": "김미순", "insurance": 199300, "hiccap": 3771941}, {"code": "022522", "name": "박춘자", "insurance": 62470, "hiccap": 1737121}, {"code": "108272", "name": "김평구", "insurance": 54680, "hiccap": 1329972}, {"code": "1D4118", "name": "권나연", "insurance": 166890, "hiccap": 3150099}];
 
-const won = n => Number(n || 0).toLocaleString('ko-KR') + '원';
+const $ = id => document.getElementById(id);
+const won = n => Math.round(Number(n)||0).toLocaleString('ko-KR') + '원';
 
-function getHighcapRate(v) {
-  if (v >= 14000000) return 1.50;
-  if (v >= 10000000) return 1.40;
-  if (v >= 6000000) return 1.30;
-  if (v >= 4000000) return 1.20;
-  if (v >= 2000000) return 1.10;
-  if (v >= 1000000) return 1.00;
+function rateFor(h) {
+  if (h >= 14000000) return 1.40;
+  if (h >= 10000000) return 1.30;
+  if (h >= 6000000) return 1.20;
+  if (h >= 4000000) return 1.10;
+  if (h >= 2000000) return 1.00;
+  if (h >= 1000000) return 0.90;
   return 0;
 }
 
-function getDailyAward(v) {
-  if (v >= 500000) return 250000;
-  if (v >= 400000) return 200000;
-  if (v >= 300000) return 150000;
-  if (v >= 200000) return 100000;
-  if (v >= 100000) return 50000;
-  return 0;
+function showError(text) {
+  $('msg').textContent = text;
+  $('msg').className = 'status error';
 }
 
-function rateText(rate) {
-  return rate ? Math.round(rate * 100) + '%' : '미달성';
-}
+$('form').addEventListener('submit', e => {
+  e.preventDefault();
+  $('results').hidden = true;
 
-function normalizeCode(value) {
-  return String(value ?? '')
-    .trim()
-    .toUpperCase()
-    .replace(/[\s-]/g, '');
-}
+  const code = $('code').value.trim().toUpperCase();
+  if (!code) return showError('본인 코드를 입력해주세요.');
 
-function findPerson(code) {
-  const key = normalizeCode(code);
-  if (!key) return undefined;
+  const found = DATA.filter(x => x.code.toUpperCase() === code);
+  if (!found.length) return showError('코드를 찾을 수 없습니다. 입력한 코드를 확인해주세요.');
+  if (found.length > 1) return showError('같은 코드가 여러 건 있습니다. 관리자에게 확인해주세요.');
 
-  // 1) exact match (alphanumeric codes included)
-  let found = DATA.find(x => normalizeCode(x.code) === key);
-  if (found) return found;
+  const p = found[0];
+  const rate = rateFor(p.hiccap);
+  const award = Math.round(p.insurance * rate);
 
-  // 2) numeric code fallback: accepts omitted leading zeros (e.g. 22522 → 022522)
-  if (/^\d+$/.test(key)) {
-    const numericKey = String(Number(key));
-    found = DATA.find(x => {
-      const c = normalizeCode(x.code);
-      return /^\d+$/.test(c) && String(Number(c)) === numericKey;
-    });
+  $('name').textContent = p.name;
+  $('insurance').textContent = won(p.insurance);
+  $('hiccap').textContent = won(p.hiccap);
+  $('award').textContent = won(award);
+  $('rate').textContent = '적용 지급률 : ' + Math.round(rate * 100) + '%';
+
+  if (rate > 0) {
+    $('formula').textContent =
+      '계산식 : ' + won(p.insurance) + ' × ' + Math.round(rate*100) + '% = ' + won(award);
+    $('eligibility').textContent = '현재 구간 기준 예상 시상금입니다.';
+    $('eligibility').className = 'status success';
+  } else {
+    $('formula').textContent = '하이캡 누계실적 100만원 이상부터 지급률이 적용됩니다.';
+    $('eligibility').textContent = '현재 시상 지급 구간 미달입니다.';
+    $('eligibility').className = 'status error';
   }
-  return found;
-}
 
-function render(person) {
-  const rate = getHighcapRate(person.highcap);
-  const highcapAward = Math.round(person.insurance * rate);
-  const dailyAward = getDailyAward(person.daily);
-  const total = highcapAward + dailyAward;
+  $('msg').textContent = '조회가 완료됐어요.';
+  $('msg').className = 'status success';
+  $('results').hidden = false;
+});
 
-  document.getElementById('name').textContent = person.name;
-  document.getElementById('branch').textContent = person.branch;
-  document.getElementById('codeBadge').textContent = person.code;
-  document.getElementById('daily').textContent = won(person.daily);
-  document.getElementById('highcap').textContent = won(person.highcap);
-  document.getElementById('insurance').textContent = won(person.insurance);
-
-  document.getElementById('rateTag').textContent = rateText(rate);
-  document.getElementById('highcapAward').textContent = rate ? won(highcapAward) : '지급 없음';
-  document.getElementById('highcapDetail').textContent = rate
-    ? '인보험실적 ' + won(person.insurance) + ' × 지급률 ' + Math.round(rate*100) + '%'
-    : '하이캡실적 100만원 미만으로 지급률 구간 미달';
-
-  const active = Number(person.active) === 1;
-  document.getElementById('activeTag').textContent = active ? '달성' : '미달성';
-  document.getElementById('activeAward').textContent = active ? '아산 맑은 쌀 10KG 지급' : '지급 없음';
-
-  document.getElementById('dailyTag').textContent = dailyAward ? '달성' : '미달성';
-  document.getElementById('dailyAward').textContent = dailyAward ? won(dailyAward) : '지급 없음';
-  document.getElementById('dailyDetail').textContent = dailyAward
-    ? '현재 일별실적 ' + won(person.daily) + ' 기준'
-    : '현재 일별실적 ' + won(person.daily) + ' · 10만원 이상부터 지급';
-
-  document.getElementById('totalCash').textContent = won(total);
-  document.getElementById('error').style.display = 'none';
-  document.getElementById('result').style.display = 'block';
-}
-
-function search() {
-  const p = findPerson(document.getElementById('codeInput').value);
-  if (!p) {
-    document.getElementById('result').style.display = 'none';
-    document.getElementById('error').textContent = '해당 코드를 찾을 수 없습니다. 코드를 다시 확인해주세요.';
-    document.getElementById('error').style.display = 'block';
-    return;
-  }
-  render(p);
-}
-
-document.getElementById('searchBtn').addEventListener('click', search);
-document.getElementById('codeInput').addEventListener('keydown', e => {
-  if (e.key === 'Enter') search();
+$('reset').addEventListener('click', () => {
+  $('code').value = '';
+  $('msg').textContent = '';
+  $('results').hidden = true;
+  $('code').focus();
 });
 </script>
 </body>
