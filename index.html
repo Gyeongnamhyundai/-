@@ -118,7 +118,7 @@ footer{font-size:13px;color:var(--muted);text-align:center;margin-top:18px}
       <strong>200만원 이상</strong> 100% ·
       <strong>100만원 이상</strong> 90%
       <br>
-      ※ 시상금 = 인보험 실적 × 하이캡 누계실적 구간별 지급률
+      ※ 시상금 = 인보험 실적 × 하이캡 누계실적 구간별 지급률 (100원 미만 버림)
     </div>
   </section>
 
@@ -159,7 +159,7 @@ $('form').addEventListener('submit', e => {
 
   const p = found[0];
   const rate = rateFor(p.hiccap);
-  const award = Math.round(p.insurance * rate);
+  const award = Math.floor((p.insurance * rate) / 100) * 100;
 
   $('name').textContent = p.name;
   $('insurance').textContent = won(p.insurance);
